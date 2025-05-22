@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onda Libras - Ensino de Ondulatória</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --background-color: #ECF0F1;
+            --text-color: #2C3E50;
+            --card-color: #FFFFFF;
+            --font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            font-size: var(--font-size);
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        
+        /* Alto Contraste */
+        body.high-contrast {
+            --primary-color: #000000;
+            --secondary-color: #0000FF;
+            --accent-color: #FF0000;
+            --background-color: #FFFFFF;
+            --text-color: #000000;
+            --card-color: #FFFFFF;
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+        
+        body.high-contrast .wave-concept {
+            border: 2px solid #000000 !important;
+        }
+        
+        body.high-contrast .menu-item {
+            border: 2px solid #000000 !important;
+        }
+        
+        /* Tamanho da Fonte */
+        body.large-text {
+            --font-size: 20px;
+        }
+        
+        body.extra-large-text {
+            --font-size: 24px;
+        }
+        
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        
+        .wave-concept {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .wave-concept:hover {
+            transform: translateY(-5px);
+        }
+        
+        .wave-concept h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .wave-concept h2::before {
+            content: "→";
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .concept-content {
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+        
+        .avatar-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            margin: 15px 0;
+            padding: 20px;
+        }
+        
+        .avatar-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .learn-more {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+        }
+        
+        .learn-more:hover, .learn-more:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--primary-color);
+            border-top: 2px solid var(--secondary-color);
+        }
+        
+        /* VLibras Customization */
+        .vw-access-button {
+            background-color: var(--accent-color) !important;
+            border-radius: 50% !important;
+            width: 50px !important;
+            height: 50px !important;
+        }
+        
+        div[vw-access-button] {
+            left: auto !important;
+            right: 30px !important;
+            bottom: 30px !important;
+        }
+        
+        /* Accessibility Features */
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            z-index: 1000;
+        }
+        
+        /* Accessibility Toolbar */
+        .accessibility-toolbar {
+            background-color: var(--primary-color);
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .accessibility-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .accessibility-button:hover, .accessibility-button:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+        
+        .accessibility-button.active {
+            background-color: var(--accent-color);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            #tab-conceitos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            #tab-conceitos {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .glossary-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .glossary-list li {
+            background-color: #fdfdfd;
+            padding: 10px 15px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .bottom-menu {
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid #fff;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        .menu-list {
+            list-style: none;
+            display: flex;
+            gap: 2px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-left: 1px solid #2980b9;
+            border-right: 1px solid #2980b9;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+        }
+
+        .menu-item:hover, .menu-item:focus {
+            background-color: #2980b9;
+            outline: 2px solid var(--accent-color);
+        }
+
+        .menu-item.active {
+            background-color: #e74c3c;
+        }
+
+        #tab-conceitos {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* Focus styles for better keyboard navigation */
+        a:focus, button:focus, input:focus, [tabindex="0"]:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Hidden content for screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+    
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-toolbar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+        <button id="contrast-toggle" class="accessibility-button" aria-pressed="false">
+            <i class="fas fa-adjust"></i> <span class="sr-only">Alto</span> Contraste
+        </button>
+        <button id="increase-font" class="accessibility-button">
+            <i class="fas fa-text-height"></i> Aumentar Letra
+        </button>
+        <button id="decrease-font" class="accessibility-button">
+            <i class="fas fa-text-width"></i> Diminuir Letra
+        </button>
+        <button id="reset-font" class="accessibility-button">
+            <i class="fas fa-font"></i> Tamanho Normal
+        </button>
+    </div>
+    
+    <div class="app-container">
+        <header>
+            <h1>Ondas em Libras</h1>
+            <p class="subtitle">Aprenda conceitos de ondulatória em Língua Brasileira de Sinais</p>
+            <nav class="bottom-menu">
+                <ul class="menu-list">
+                    <li class="menu-item active" data-tab="conceitos" tabindex="0" role="button" aria-pressed="true">
+                        <i class="fas fa-book"></i> <span>Conceitos</span>
+                    </li>
+                    <li class="menu-item" data-tab="glossario" tabindex="0" role="button" aria-pressed="false">
+                        <i class="fas fa-book-open"></i> <span>Glossário</span>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="main-content" class="main-content">
+            <!-- Conteúdo das Abas -->
+            <div class="tab-content" id="tab-conceitos" role="tabpanel" aria-labelledby="tab-conceitos">
+                <section class="wave-concept" tabindex="0">
+                    <h2>O que é uma Onda?</h2>
+                    <div class="concept-content">
+                        <p>Introdução ao conceito fundamental de ondas e sua importância na física.</p>
+                        <a href="oQueSaoOndas.html" class="learn-more">Aprenda mais</a>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Tipos de Ondas</h2>
+                    <div class="concept-content">
+                        <p>Diferença entre ondas transversais e longitudinais com exemplos do cotidiano.</p>
+                        <a href="tiposOndas.html" class="learn-more">Aprenda mais</a>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Características das Ondas</h2>
+                    <div class="concept-content">
+                        <p>Amplitude, comprimento de onda, frequência e período - os parâmetros que definem uma onda.</p>
+                        <button class="learn-more" aria-label="Aprender mais sobre características das ondas">Aprender Mais</button>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Fenômenos Ondulatórios</h2>
+                    <div class="concept-content">
+                        <p>Reflexão, refração, difração e interferência - como as ondas interagem com o ambiente.</p>
+                        <button class="learn-more" aria-label="Aprender mais sobre fenômenos ondulatórios">Aprender Mais</button>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Ondas Sonoras</h2>
+                    <div class="concept-content">
+                        <p>Como funcionam as ondas sonoras e sua importância para a comunidade surda.</p>
+                        <button class="learn-more" aria-label="Aprender mais sobre ondas sonoras">Aprender Mais</button>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Aplicações Práticas</h2>
+                    <div class="concept-content">
+                        <p>Como o conhecimento das ondas é aplicado em tecnologias assistivas para surdos.</p>
+                        <button class="learn-more" aria-label="Aprender mais sobre aplicações práticas">Aprender Mais</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="tab-glossario" style="display: none;" role="tabpanel" aria-labelledby="tab-glossario">
+                <section class="wave-concept glossary" tabindex="0">
+                    <h2>Glossário de Ondulatória</h2>
+                    <div class="concept-content">
+                        <input type="text" id="searchInput" placeholder="Pesquisar termo..." aria-label="Pesquisar no glossário">
+                        <ul class="glossary-list" id="glossaryList">
+                            <li><strong>Onda:</strong> Perturbação que se propaga no espaço transportando energia sem transportar matéria.</li>
+                            <li><strong>Frequência:</strong> Número de ciclos de uma onda que ocorrem por segundo (Hz).</li>
+                            <li><strong>Período:</strong> Tempo necessário para uma onda completar um ciclo.</li>
+                            <li><strong>Amplitude:</strong> Máxima distância entre o ponto de equilíbrio e o pico da onda.</li>
+                            <li><strong>Comprimento de Onda:</strong> Distância entre dois pontos equivalentes de ciclos consecutivos.</li>
+                            <li><strong>Reflexão:</strong> Retorno da onda ao encontrar um obstáculo.</li>
+                            <li><strong>Refração:</strong> Mudança de direção e velocidade da onda ao mudar de meio.</li>
+                            <li><strong>Difração:</strong> Capacidade da onda de contornar obstáculos.</li>
+                            <li><strong>Interferência:</strong> Combinação de duas ou mais ondas no mesmo ponto do espaço.</li>
+                            <li><strong>Ondas Transversais:</strong> Oscilam perpendicularmente à direção de propagação.</li>
+                            <li><strong>Ondas Longitudinais:</strong> Oscilam na mesma direção da propagação.</li>
+                            <li><strong>Ondas Mecânicas:</strong> Necessitam de um meio material para se propagar.</li>
+                            <li><strong>Ondas Eletromagnéticas:</strong> Não necessitam de meio material para se propagar.</li>
+                            <li><strong>Fase:</strong> Estado instantâneo de vibração de uma partícula em uma onda.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2023 Onda Libras - Todos os direitos reservados</p>
+            <p>Desenvolvido para educação inclusiva</p>
+        </footer>
+    </div>
+
+    <!-- VLibras Plugin -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        // Inicializa o VLibras
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalization: 'https://vlibras.gov.br/config/config.json',
+            opacity: 0.9,
+            position: 'R',
+            avatar: 'avatar3D'
+        });
+        
+        // Interatividade dos cards
+        document.querySelectorAll('.learn-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const conceptTitle = this.closest('.wave-concept').querySelector('h2').textContent;
+            });
+            
+            button.addEventListener('focus', function() {
+                this.style.outline = `2px solid ${getComputedStyle(document.documentElement).getPropertyValue('--accent-color')}`;
+            });
+            
+            button.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+        
+        // Função para atualizar o VLibras quando conteúdo dinâmico for carregado
+        function updateVLibrasContent() {
+            if (window.VLibras && window.VLibras.Widget.updateContent) {
+                window.VLibras.Widget.updateContent();
+            }
+        }
+        
+        // Alternância de abas baseada no menu inferior
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Alterna a aba ativa no menu
+                document.querySelectorAll('.menu-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+
+                // Alterna o conteúdo visível com o estilo correto
+                const tab = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    if (content.id === `tab-${tab}`) {
+                        if (tab === 'conceitos') {
+                            content.style.display = 'grid';
+                        } else {
+                            content.style.display = 'block';
+                        }
+                        content.setAttribute('aria-hidden', 'false');
+                    } else {
+                        content.style.display = 'none';
+                        content.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            });
+            
+            // Adiciona navegação por teclado
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Funcionalidades de acessibilidade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alto Contraste
+            const contrastToggle = document.getElementById('contrast-toggle');
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                const isPressed = document.body.classList.contains('high-contrast');
+                this.setAttribute('aria-pressed', isPressed);
+                localStorage.setItem('highContrast', isPressed);
+            });
+            
+            // Verifica se o usuário já tinha alto contraste ativado
+            if (localStorage.getItem('highContrast')) {
+                document.body.classList.add('high-contrast');
+                contrastToggle.setAttribute('aria-pressed', 'true');
+            }
+            
+            // Tamanho da Fonte
+            const increaseFont = document.getElementById('increase-font');
+            const decreaseFont = document.getElementById('decrease-font');
+            const resetFont = document.getElementById('reset-font');
+            
+            increaseFont.addEventListener('click', function() {
+                if (document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('large-text')) {
+                    document.body.classList.remove('large-text');
+                    document.body.classList.add('extra-large-text');
+                } else {
+                    document.body.classList.add('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('extra') ? 'extra-large' : 'large');
+            });
+            
+            decreaseFont.addEventListener('click', function() {
+                if (!document.body.classList.contains('large-text') && !document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('extra-large-text')) {
+                    document.body.classList.remove('extra-large-text');
+                    document.body.classList.add('large-text');
+                } else {
+                    document.body.classList.remove('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('large-text') ? 'large' : 'normal');
+            });
+            
+            resetFont.addEventListener('click', function() {
+                document.body.classList.remove('large-text', 'extra-large-text');
+                localStorage.setItem('fontSize', 'normal');
+            });
+            
+            // Verifica o tamanho da fonte salvo
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize === 'large') {
+                document.body.classList.add('large-text');
+            } else if (savedFontSize === 'extra-large') {
+                document.body.classList.add('extra-large-text');
+            }
+            
+            // Pesquisa no glossário
+            const searchInput = document.getElementById('searchInput');
+            const glossaryItems = document.querySelectorAll('#glossaryList li');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                glossaryItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
