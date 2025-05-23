@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Características das Ondas | Onda Libras</title>
     <style>
         :root {
@@ -13,6 +13,7 @@
             --text-color: #2C3E50;
             --card-color: #FFFFFF;
             --font-size: 16px;
+            --mobile-font-size: 14px;
         }
         
         body {
@@ -49,69 +50,72 @@
         /* Tamanho da Fonte */
         body.large-text {
             --font-size: 20px;
+            --mobile-font-size: 18px;
         }
         
         body.extra-large-text {
             --font-size: 24px;
+            --mobile-font-size: 20px;
         }
         
         .app-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--secondary-color);
         }
         
         h1 {
             color: var(--primary-color);
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 10px;
         }
         
         .subtitle {
             color: var(--secondary-color);
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: normal;
         }
         
         .wave-concept {
             background-color: var(--card-color);
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .wave-concept:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .wave-concept h2 {
             color: var(--accent-color);
             margin-top: 0;
             border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             display: flex;
             align-items: center;
+            font-size: 1.3rem;
         }
         
         .wave-concept h2::before {
             content: "→";
-            margin-right: 10px;
+            margin-right: 8px;
             color: var(--secondary-color);
         }
         
         .concept-content {
             display: flex;
             flex-direction: column;
-            min-height: 200px;
+            min-height: auto;
         }
         
         .avatar-container {
@@ -120,14 +124,14 @@
             justify-content: center;
             align-items: center;
             background-color: #f5f5f5;
-            border-radius: 8px;
-            margin: 15px 0;
-            padding: 20px;
+            border-radius: 6px;
+            margin: 10px 0;
+            padding: 15px;
         }
         
         .avatar-placeholder {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             background-color: #e0e0e0;
             border-radius: 50%;
             display: flex;
@@ -135,19 +139,21 @@
             align-items: center;
             color: var(--secondary-color);
             font-weight: bold;
+            font-size: 0.9rem;
         }
         
         .learn-more {
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 8px 16px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 12px;
             align-self: flex-start;
             transition: background-color 0.3s;
+            font-size: 0.9rem;
         }
         
         .learn-more:hover, .learn-more:focus {
@@ -156,40 +162,42 @@
         }
 
         .voltar {
-        display: inline-block;
-        margin-top: 30px;
-        text-decoration: none;
-        background-color: #007BFF;
-        color: white;
-        padding: 10px 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .voltar:hover {
-        background-color: #0056b3;
+            background-color: #0056b3;
         }
         
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
+            margin-top: 30px;
+            padding: 15px;
             color: var(--primary-color);
             border-top: 2px solid var(--secondary-color);
+            font-size: 0.9rem;
         }
         
         /* VLibras Customization */
         .vw-access-button {
             background-color: var(--accent-color) !important;
             border-radius: 50% !important;
-            width: 50px !important;
-            height: 50px !important;
+            width: 40px !important;
+            height: 40px !important;
         }
         
         div[vw-access-button] {
             left: auto !important;
-            right: 30px !important;
-            bottom: 30px !important;
+            right: 15px !important;
+            bottom: 15px !important;
         }
         
         /* Accessibility Features */
@@ -215,23 +223,24 @@
         /* Accessibility Toolbar */
         .accessibility-toolbar {
             background-color: var(--primary-color);
-            padding: 10px;
+            padding: 8px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .accessibility-button {
             background-color: var(--secondary-color);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 6px 12px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s;
+            font-size: 0.8rem;
         }
         
         .accessibility-button:hover, .accessibility-button:focus {
@@ -244,7 +253,62 @@
         }
         
         /* Responsive Design */
-        @media (min-width: 768px) {
+        @media (max-width: 767px) {
+            body {
+                font-size: var(--mobile-font-size);
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .wave-concept h2 {
+                font-size: 1.1rem;
+            }
+            
+            .accessibility-toolbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .accessibility-button {
+                width: 90%;
+                text-align: center;
+            }
+            
+            .menu-item {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .menu-item i {
+                display: none; /* Esconde ícones em mobile para economizar espaço */
+            }
+            
+            .formula {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+            
+            table {
+                font-size: 0.8rem;
+            }
+            
+            table th, table td {
+                padding: 6px;
+            }
+            
+            #answer1, #answer2, #answer3, #challenge1, #challenge2 {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
             .wave-characteristics {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -256,57 +320,49 @@
             }
         }
 
-        .glossary-list {
-            list-style: none;
-            padding-left: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .glossary-list li {
-            background-color: #fdfdfd;
-            padding: 10px 15px;
-            border-left: 5px solid var(--secondary-color);
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        
         .bottom-menu {
             background-color: #3498db;
             display: flex;
             justify-content: center;
             border-top: 2px solid #fff;
             position: sticky;
-            bottom: 0;
+            bottom: 0px;
             z-index: 100;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
 
         .menu-list {
             list-style: none;
             display: flex;
-            gap: 2px;
+            gap: 1px;
             padding: 0;
             margin: 0;
+            width: 100%;
         }
 
         .menu-item {
-            padding: 10px 20px;
+            padding: 8px 12px;
             cursor: pointer;
             color: #fff;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             border-left: 1px solid #2980b9;
             border-right: 1px solid #2980b9;
             background-color: #3498db;
             transition: background-color 0.3s;
+            font-size: 1rem;
+            flex: 1;
+            min-width: max-content;
+            justify-content: center;
         }
 
         .menu-item:hover, .menu-item:focus {
             background-color: #2980b9;
-            outline: 2px solid var(--accent-color);
+            outline: 0.8px solid var(--accent-color);
         }
 
         .menu-item.active {
@@ -316,13 +372,13 @@
         .wave-characteristics {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 20px;
         }
 
         .tab-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 20px;
         }
 
         /* Focus styles for better keyboard navigation */
@@ -347,30 +403,83 @@
         /* Diagram styles */
         .wave-diagram {
             width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
+            max-width: 100%;
+            margin: 15px auto;
             display: block;
+            height: auto;
         }
         
         .formula {
             background-color: #f8f9fa;
-            border-left: 4px solid var(--secondary-color);
-            padding: 10px 15px;
-            margin: 15px 0;
+            border-left: 3px solid var(--secondary-color);
+            padding: 8px 12px;
+            margin: 12px 0;
             font-family: "Courier New", monospace;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 4px 4px 0;
+            overflow-x: auto;
         }
         
         .characteristic-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 15px;
         }
         
         @media (min-width: 768px) {
             .characteristic-grid {
                 grid-template-columns: 1fr 1fr;
             }
+        }
+        
+        /* Melhorias para tabelas em mobile */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        table th, table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        @media (max-width: 600px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+        
+        /* Melhorias para listas em mobile */
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        /* Ajustes para elementos de resposta */
+        #answer1, #answer2, #answer3, #challenge1, #challenge2 {
+            display: none;
+            margin-top: 12px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -404,7 +513,7 @@
                         <i class="fas fa-wave-square"></i> <span>Características</span>
                     </li>
                     <li class="menu-item" data-tab="relacoes" tabindex="0" role="button" aria-pressed="false">
-                        <i class="fas fa-calculator"></i> <span>Relações Matemáticas</span>
+                        <i class="fas fa-calculator"></i> <span>Relações</span>
                     </li>
                     <li class="menu-item" data-tab="exercicios" tabindex="0" role="button" aria-pressed="false">
                         <i class="fas fa-question-circle"></i> <span>Exercícios</span>
@@ -422,13 +531,12 @@
                         <div class="characteristic-grid">
                             <div>
                                 <p>A amplitude de uma onda é a medida da magnitude de sua oscilação. Representa a distância máxima que uma partícula do meio se afasta de sua posição de equilíbrio quando a onda passa por ela.</p>
-                                <p>Em uma onda transversal, a amplitude corresponde à altura da crista ou à profundidade do vale em relação à posição de equilíbrio. Em uma onda longitudinal, está relacionada à máxima compressão ou rarefação das partículas do meio.</p>
                                 <div class="formula">A = y<sub>max</sub> - y<sub>equilíbrio</sub></div>
                             </div>
                             <div>
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Wave_characteristics.svg/500px-Wave_characteristics.svg.png" alt="Diagrama mostrando a amplitude de uma onda" class="wave-diagram">
                                 <p><strong>Unidade:</strong> metros (m) no SI</p>
-                                <p><strong>Importância:</strong> A amplitude está diretamente relacionada à energia transportada pela onda. Ondas com maior amplitude transportam mais energia.</p>
+                                <p><strong>Importância:</strong> Relacionada à energia transportada pela onda.</p>
                             </div>
                         </div>
                     </div>
@@ -439,15 +547,13 @@
                     <div class="concept-content">
                         <div class="characteristic-grid">
                             <div>
-                                <p>O comprimento de onda (λ) é a distância entre dois pontos consecutivos que estão em fase em uma onda, ou seja, a distância que a onda percorre durante um período completo de oscilação.</p>
-                                <p>Pode ser medido entre duas cristas sucessivas, dois vales sucessivos ou qualquer dois pontos equivalentes em ciclos consecutivos.</p>
+                                <p>O comprimento de onda (λ) é a distância entre dois pontos consecutivos que estão em fase em uma onda.</p>
                                 <div class="formula">λ = v / f</div>
                                 <p>onde v é a velocidade da onda e f é a frequência.</p>
                             </div>
                             <div>
                                 <img src="https://www.physicsclassroom.com/getattachment/Class/waves/u10l1b.cfm/image.png" alt="Diagrama mostrando o comprimento de onda" class="wave-diagram">
                                 <p><strong>Unidade:</strong> metros (m) no SI</p>
-                                <p><strong>Importância:</strong> Determina como a onda interage com obstáculos e aberturas (difração) e é fundamental para entender fenômenos como interferência e ressonância.</p>
                             </div>
                         </div>
                     </div>
@@ -458,15 +564,13 @@
                     <div class="concept-content">
                         <div class="characteristic-grid">
                             <div>
-                                <p>A frequência (f) de uma onda é o número de oscilações completas que ocorrem em um determinado ponto por unidade de tempo. Representa quantos ciclos da onda passam por um ponto a cada segundo.</p>
-                                <p>É uma característica determinada pela fonte que produz a onda e não muda quando a onda se propaga por diferentes meios (ao contrário da velocidade e do comprimento de onda).</p>
+                                <p>A frequência (f) de uma onda é o número de oscilações completas que ocorrem em um determinado ponto por unidade de tempo.</p>
                                 <div class="formula">f = 1 / T</div>
                                 <p>onde T é o período da onda.</p>
                             </div>
                             <div>
                                 <img src="https://www.schoolphysics.co.uk/age14-16/Wave%20properties/text/Frequency/images/1.png" alt="Diagrama comparando ondas de diferentes frequências" class="wave-diagram">
-                                <p><strong>Unidade:</strong> Hertz (Hz) no SI, equivalente a 1/s ou s⁻¹</p>
-                                <p><strong>Importância:</strong> No som, determina a altura tonal (agudo/grave). Na luz, determina a cor. O ouvido humano percebe frequências entre 20 Hz e 20.000 Hz.</p>
+                                <p><strong>Unidade:</strong> Hertz (Hz)</p>
                             </div>
                         </div>
                     </div>
@@ -477,16 +581,13 @@
                     <div class="concept-content">
                         <div class="characteristic-grid">
                             <div>
-                                <p>O período (T) de uma onda é o tempo necessário para que um ciclo completo da onda passe por um determinado ponto. É o inverso da frequência.</p>
-                                <p>Representa o tempo que uma partícula do meio leva para completar uma oscilação completa quando a onda passa por ela.</p>
+                                <p>O período (T) de uma onda é o tempo necessário para que um ciclo completo da onda passe por um determinado ponto.</p>
                                 <div class="formula">T = 1 / f</div>
                                 <p>onde f é a frequência da onda.</p>
                             </div>
                             <div>
                                 <img src="https://www.physicsclassroom.com/getattachment/Class/waves/u10l1b.cfm/image2.png" alt="Diagrama mostrando o período de uma onda" class="wave-diagram">
-                                <p><strong>Unidade:</strong> segundos (s) no SI</p>
-                                <p><strong>Importância:</strong> Em fenômenos periódicos, como marés ou batimentos cardíacos, o período é uma medida fundamental para caracterizar o fenômeno.</p>
-                                <p>Para ondas sonoras audíveis, os períodos variam de 0,05 ms (20.000 Hz) a 50 ms (20 Hz).</p>
+                                <p><strong>Unidade:</strong> segundos (s)</p>
                             </div>
                         </div>
                     </div>
@@ -497,21 +598,13 @@
                     <div class="concept-content">
                         <div class="characteristic-grid">
                             <div>
-                                <p>A velocidade de propagação (v) de uma onda é a rapidez com que a perturbação se propaga através do meio. Depende das propriedades do meio e não da fonte da onda.</p>
-                                <p>Para ondas mecânicas, a velocidade depende da elasticidade e da densidade do meio. Para ondas eletromagnéticas, no vácuo é constante (c ≈ 3×10⁸ m/s).</p>
+                                <p>A velocidade de propagação (v) de uma onda é a rapidez com que a perturbação se propaga através do meio.</p>
                                 <div class="formula">v = λ × f</div>
                                 <p>onde λ é o comprimento de onda e f é a frequência.</p>
                             </div>
                             <div>
                                 <img src="https://www.physicsclassroom.com/getattachment/Class/waves/u10l2a.cfm/image.png" alt="Relação entre velocidade, comprimento de onda e frequência" class="wave-diagram">
-                                <p><strong>Unidade:</strong> metros por segundo (m/s) no SI</p>
-                                <p><strong>Exemplos:</strong></p>
-                                <ul>
-                                    <li>Som no ar (20°C): ~343 m/s</li>
-                                    <li>Som na água: ~1.480 m/s</li>
-                                    <li>Luz no vácuo: ~3×10⁸ m/s</li>
-                                    <li>Ondas sísmicas P: 5-8 km/s</li>
-                                </ul>
+                                <p><strong>Unidade:</strong> metros por segundo (m/s)</p>
                             </div>
                         </div>
                     </div>
@@ -522,20 +615,13 @@
                     <div class="concept-content">
                         <div class="characteristic-grid">
                             <div>
-                                <p>A fase de uma onda descreve o estado de oscilação em um ponto e instante específicos. Indica em que ponto do ciclo a onda se encontra em um determinado momento.</p>
-                                <p>Diferença de fase entre duas ondas é importante para entender fenômenos como interferência e batimentos.</p>
+                                <p>A fase de uma onda descreve o estado de oscilação em um ponto e instante específicos.</p>
                                 <div class="formula">φ = (2π/λ)x - (2π/T)t + φ₀</div>
                                 <p>onde φ₀ é a fase inicial, x é a posição e t é o tempo.</p>
                             </div>
                             <div>
                                 <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/waves-waveform-4.gif" alt="Diagrama mostrando a fase de uma onda" class="wave-diagram">
                                 <p><strong>Unidade:</strong> radianos (rad) ou graus (°)</p>
-                                <p><strong>Importância:</strong></p>
-                                <ul>
-                                    <li>Ondas em fase se reforçam (interferência construtiva)</li>
-                                    <li>Ondas com fase oposta (180°) se cancelam (interferência destrutiva)</li>
-                                    <li>Fundamental para entender padrões de interferência e difração</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -544,78 +630,65 @@
 
             <div class="tab-content" id="tab-relacoes" style="display: none;" role="tabpanel" aria-labelledby="tab-relacoes">
                 <section class="wave-concept" tabindex="0">
-                    <h2>Relações Matemáticas entre as Características</h2>
+                    <h2>Relações Matemáticas</h2>
                     <div class="concept-content">
-                        <h3>Equação Fundamental da Ondulatória</h3>
+                        <h3>Equação Fundamental</h3>
                         <div class="formula">v = λ × f</div>
-                        <p>Esta equação relaciona as três principais características de uma onda periódica:</p>
-                        <ul>
-                            <li><strong>v</strong> - velocidade de propagação (m/s)</li>
-                            <li><strong>λ</strong> - comprimento de onda (m)</li>
-                            <li><strong>f</strong> - frequência (Hz)</li>
-                        </ul>
                         
-                        <h3>Relação entre Período e Frequência</h3>
+                        <h3>Período e Frequência</h3>
                         <div class="formula">T = 1 / f</div>
                         <div class="formula">f = 1 / T</div>
-                        <p>O período (T) e a frequência (f) são grandezas inversamente proporcionais.</p>
                         
                         <h3>Equação da Onda</h3>
                         <div class="formula">y(x,t) = A × sen(2π(x/λ - t/T) + φ₀)</div>
-                        <p>Esta equação descreve o deslocamento (y) de uma partícula na posição x no tempo t para uma onda senoidal.</p>
                         
-                        <h3>Energia Transportada por uma Onda</h3>
+                        <h3>Energia da Onda</h3>
                         <div class="formula">E ∝ A² × f²</div>
-                        <p>A energia transportada por uma onda é proporcional ao quadrado de sua amplitude e ao quadrado de sua frequência.</p>
-                        
-                        <h3>Exemplo de Aplicação</h3>
-                        <p>Uma onda sonora no ar tem frequência de 440 Hz (nota Lá). Sabendo que a velocidade do som no ar é 343 m/s, qual seu comprimento de onda?</p>
-                        <div class="formula">λ = v / f = 343 / 440 ≈ 0,78 m</div>
                     </div>
                 </section>
                 
                 <section class="wave-concept" tabindex="0">
                     <h2>Tabela de Relações</h2>
                     <div class="concept-content">
-                        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <table>
                             <thead>
-                                <tr style="background-color: var(--secondary-color); color: white;">
-                                    <th style="padding: 10px; border: 1px solid #ddd;">Característica</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">Símbolo</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">Unidade (SI)</th>
-                                    <th style="padding: 10px; border: 1px solid #ddd;">Relações</th>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Símbolo</th>
+                                    <th>Unidade (SI)</th>
+                                    <th>Relações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Amplitude</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">A</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">metros (m)</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Relacionada à energia (E ∝ A²)</td>
-                                </tr>
-                                <tr style="background-color: #f9f9f9;">
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Comprimento de onda</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">λ</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">metros (m)</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">λ = v/f = v×T</td>
+                                    <td>Amplitude</td>
+                                    <td>A</td>
+                                    <td>metros (m)</td>
+                                    <td>E ∝ A²</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Frequência</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">f</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Hertz (Hz)</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">f = 1/T = v/λ</td>
-                                </tr>
-                                <tr style="background-color: #f9f9f9;">
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Período</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">T</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">segundos (s)</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">T = 1/f = λ/v</td>
+                                    <td>Comprimento de onda</td>
+                                    <td>λ</td>
+                                    <td>metros (m)</td>
+                                    <td>λ = v/f</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">Velocidade</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">v</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">m/s</td>
-                                    <td style="padding: 8px; border: 1px solid #ddd;">v = λ×f = λ/T</td>
+                                    <td>Frequência</td>
+                                    <td>f</td>
+                                    <td>Hertz (Hz)</td>
+                                    <td>f = 1/T</td>
+                                </tr>
+                                <tr>
+                                    <td>Período</td>
+                                    <td>T</td>
+                                    <td>segundos (s)</td>
+                                    <td>T = 1/f</td>
+                                </tr>
+                                <tr>
+                                    <td>Velocidade</td>
+                                    <td>v</td>
+                                    <td>m/s</td>
+                                    <td>v = λ×f</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -625,47 +698,34 @@
 
             <div class="tab-content" id="tab-exercicios" style="display: none;" role="tabpanel" aria-labelledby="tab-exercicios">
                 <section class="wave-concept" tabindex="0">
-                    <h2>Exercícios sobre Características das Ondas</h2>
+                    <h2>Exercícios</h2>
                     <div class="concept-content">
                         <h3>Questão 1</h3>
                         <p>Uma onda no oceano tem comprimento de onda de 10 m e frequência de 0,1 Hz. Calcule:</p>
                         <ol type="a">
-                            <li>A velocidade de propagação da onda</li>
-                            <li>O período da onda</li>
-                            <li>Quantas ondas passam por um ponto fixo em 1 minuto?</li>
+                            <li>A velocidade de propagação</li>
+                            <li>O período</li>
+                            <li>Quantas ondas passam por um ponto em 1 minuto?</li>
                         </ol>
                         <button class="learn-more" onclick="showAnswer('answer1')">Mostrar Resposta</button>
-                        <div id="answer1" style="display: none; margin-top: 15px; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+                        <div id="answer1">
                             <p><strong>Respostas:</strong></p>
-                            <p>a) v = λ × f = 10 m × 0,1 Hz = 1 m/s</p>
-                            <p>b) T = 1/f = 1/0,1 = 10 s</p>
-                            <p>c) Número de ondas = f × tempo = 0,1 Hz × 60 s = 6 ondas</p>
+                            <p>a) v = λ × f = 1 m/s</p>
+                            <p>b) T = 1/f = 10 s</p>
+                            <p>c) 6 ondas</p>
                         </div>
                         
                         <h3>Questão 2</h3>
-                        <p>Uma estação de rádio transmite na frequência de 100 MHz. Sabendo que as ondas de rádio são eletromagnéticas e se propagam com velocidade de 3×10⁸ m/s, calcule:</p>
+                        <p>Uma estação de rádio transmite em 100 MHz. Velocidade: 3×10⁸ m/s. Calcule:</p>
                         <ol type="a">
-                            <li>O comprimento de onda da transmissão</li>
-                            <li>O período da onda</li>
+                            <li>Comprimento de onda</li>
+                            <li>Período</li>
                         </ol>
                         <button class="learn-more" onclick="showAnswer('answer2')">Mostrar Resposta</button>
-                        <div id="answer2" style="display: none; margin-top: 15px; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+                        <div id="answer2">
                             <p><strong>Respostas:</strong></p>
-                            <p>a) λ = v/f = (3×10⁸ m/s)/(100×10⁶ Hz) = 3 m</p>
-                            <p>b) T = 1/f = 1/(100×10⁶) = 10⁻⁸ s = 10 ns</p>
-                        </div>
-                        
-                        <h3>Questão 3</h3>
-                        <p>Duas ondas sonoras têm a mesma amplitude, mas uma tem o dobro da frequência da outra. Compare:</p>
-                        <ol type="a">
-                            <li>Seus comprimentos de onda (considerando mesma velocidade de propagação)</li>
-                            <li>A energia transportada por cada uma</li>
-                        </ol>
-                        <button class="learn-more" onclick="showAnswer('answer3')">Mostrar Resposta</button>
-                        <div id="answer3" style="display: none; margin-top: 15px; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
-                            <p><strong>Respostas:</strong></p>
-                            <p>a) Como v = λ×f, se f₂ = 2f₁ então λ₂ = λ₁/2 (a onda com maior frequência tem menor comprimento de onda)</p>
-                            <p>b) E ∝ A²f², como A é igual e f₂ = 2f₁, então E₂ = 4E₁ (a onda com maior frequência transporta 4 vezes mais energia)</p>
+                            <p>a) λ = v/f = 3 m</p>
+                            <p>b) T = 1/f = 10 ns</p>
                         </div>
                     </div>
                 </section>
@@ -674,24 +734,12 @@
                     <h2>Problemas Desafiadores</h2>
                     <div class="concept-content">
                         <h3>Desafio 1</h3>
-                        <p>Um violonista afina a corda Lá de seu instrumento para vibrar com frequência fundamental de 440 Hz. Sabendo que a velocidade das ondas na corda é de 220 m/s, qual é o comprimento da onda estacionária fundamental na corda?</p>
+                        <p>Violão com frequência 440 Hz e velocidade 220 m/s. Qual o comprimento da onda estacionária?</p>
                         <button class="learn-more" onclick="showAnswer('challenge1')">Mostrar Resolução</button>
-                        <div id="challenge1" style="display: none; margin-top: 15px; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
+                        <div id="challenge1">
                             <p><strong>Resolução:</strong></p>
-                            <p>Na frequência fundamental, o comprimento da corda L corresponde a meio comprimento de onda (λ/2).</p>
-                            <p>Primeiro calculamos λ: λ = v/f = 220/440 = 0,5 m</p>
-                            <p>Então L = λ/2 = 0,5/2 = 0,25 m = 25 cm</p>
-                        </div>
-                        
-                        <h3>Desafio 2</h3>
-                        <p>Um radar emite pulsos de micro-ondas com frequência de 10 GHz em direção a um avião que se aproxima com velocidade de 300 m/s. Considerando a velocidade das ondas eletromagnéticas como 3×10⁸ m/s, calcule a variação de frequência percebida pelo radar devido ao efeito Doppler.</p>
-                        <button class="learn-more" onclick="showAnswer('challenge2')">Mostrar Resolução</button>
-                        <div id="challenge2" style="display: none; margin-top: 15px; padding: 10px; background-color: #f0f8ff; border-radius: 5px;">
-                            <p><strong>Resolução:</strong></p>
-                            <p>Para o efeito Doppler com fonte fixa e observador em movimento: f' = f(1 + v₀/v)</p>
-                            <p>Onde v₀ = 300 m/s (velocidade do avião), v = 3×10⁸ m/s</p>
-                            <p>f' = 10×10⁹ × (1 + 300/(3×10⁸)) = 10×10⁹ × (1 + 10⁻⁶) = 10.010 MHz</p>
-                            <p>Variação Δf = f' - f = 10 kHz</p>
+                            <p>λ = v/f = 0,5 m</p>
+                            <p>L = λ/2 = 25 cm</p>
                         </div>
                     </div>
                 </section>
@@ -723,7 +771,7 @@
             avatar: 'avatar3D'
         });
         
-        // Função para mostrar respostas dos exercícios
+        // Função para mostrar respostas
         function showAnswer(id) {
             const answer = document.getElementById(id);
             if (answer.style.display === 'none' || answer.style.display === '') {
@@ -733,10 +781,9 @@
             }
         }
         
-        // Alternância de abas baseada no menu inferior
+        // Alternância de abas
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', function() {
-                // Alterna a aba ativa no menu
                 document.querySelectorAll('.menu-item').forEach(i => {
                     i.classList.remove('active');
                     i.setAttribute('aria-pressed', 'false');
@@ -744,7 +791,6 @@
                 this.classList.add('active');
                 this.setAttribute('aria-pressed', 'true');
 
-                // Alterna o conteúdo visível com o estilo correto
                 const tab = this.getAttribute('data-tab');
                 document.querySelectorAll('.tab-content').forEach(content => {
                     if (content.id === `tab-${tab}`) {
@@ -756,11 +802,9 @@
                     }
                 });
                 
-                // Atualiza o VLibras para o novo conteúdo
                 updateVLibrasContent();
             });
             
-            // Adiciona navegação por teclado
             item.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -780,7 +824,6 @@
                 localStorage.setItem('highContrast', isPressed);
             });
             
-            // Verifica se o usuário já tinha alto contraste ativado
             if (localStorage.getItem('highContrast') === 'true') {
                 document.body.classList.add('high-contrast');
                 contrastToggle.setAttribute('aria-pressed', 'true');
@@ -820,7 +863,6 @@
                 localStorage.setItem('fontSize', 'normal');
             });
             
-            // Verifica o tamanho da fonte salvo
             const savedFontSize = localStorage.getItem('fontSize');
             if (savedFontSize === 'large') {
                 document.body.classList.add('large-text');
@@ -829,7 +871,6 @@
             }
         });
         
-        // Função para atualizar o VLibras quando conteúdo dinâmico for carregado
         function updateVLibrasContent() {
             if (window.VLibras && window.VLibras.Widget.updateContent) {
                 window.VLibras.Widget.updateContent();
