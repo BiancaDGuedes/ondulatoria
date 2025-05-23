@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenômenos Ondulatórios | Onda Libras</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --background-color: #ECF0F1;
+            --text-color: #2C3E50;
+            --card-color: #FFFFFF;
+            --font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            font-size: var(--font-size);
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        
+        /* Alto Contraste */
+        body.high-contrast {
+            --primary-color: #000000;
+            --secondary-color: #0000FF;
+            --accent-color: #FF0000;
+            --background-color: #FFFFFF;
+            --text-color: #000000;
+            --card-color: #FFFFFF;
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+        
+        body.high-contrast .wave-concept {
+            border: 2px solid #000000 !important;
+        }
+        
+        body.high-contrast .menu-item {
+            border: 2px solid #000000 !important;
+        }
+        
+        /* Tamanho da Fonte */
+        body.large-text {
+            --font-size: 20px;
+        }
+        
+        body.extra-large-text {
+            --font-size: 24px;
+        }
+        
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .wave-concept {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .wave-concept:hover {
+            transform: translateY(-3px);
+        }
+        
+        .wave-concept h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .wave-concept h2::before {
+            content: "→";
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+        
+        .concept-content {
+            display: flex;
+            flex-direction: column;
+            min-height: auto;
+        }
+        
+        .learn-more {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .learn-more:hover, .learn-more:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+
+        .voltar {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .voltar:hover {
+            background-color: #0056b3;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: var(--primary-color);
+            border-top: 2px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        /* VLibras Customization */
+        .vw-access-button {
+            background-color: var(--accent-color) !important;
+            border-radius: 50% !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+        
+        div[vw-access-button] {
+            left: auto !important;
+            right: 15px !important;
+            bottom: 15px !important;
+        }
+        
+        /* Accessibility Features */
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            z-index: 1000;
+        }
+        
+        /* Accessibility Toolbar */
+        .accessibility-toolbar {
+            background-color: var(--primary-color);
+            padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .accessibility-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 0.8rem;
+        }
+        
+        .accessibility-button:hover, .accessibility-button:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+        
+        .accessibility-button.active {
+            background-color: var(--accent-color);
+        }
+
+        .bottom-menu {
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid #fff;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-list {
+            list-style: none;
+            display: flex;
+            gap: 1px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .menu-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-left: 1px solid #2980b9;
+            border-right: 1px solid #2980b9;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+            font-size: 0.8rem;
+            flex: 1;
+            min-width: max-content;
+            justify-content: center;
+        }
+
+        .menu-item:hover, .menu-item:focus {
+            background-color: #2980b9;
+            outline: 2px solid var(--accent-color);
+        }
+
+        .menu-item.active {
+            background-color: #e74c3c;
+        }
+
+        .wave-phenomena {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        /* Focus styles for better keyboard navigation */
+        a:focus, button:focus, input:focus, [tabindex="0"]:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Hidden content for screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Diagram styles */
+        .wave-diagram {
+            width: 100%;
+            max-width: 100%;
+            margin: 10px auto;
+            display: block;
+            border-radius: 6px;
+            height: auto;
+        }
+        
+        .formula {
+            background-color: #f8f9fa;
+            border-left: 3px solid var(--secondary-color);
+            padding: 8px 10px;
+            margin: 10px 0;
+            font-family: "Courier New", monospace;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .phenomenon-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .example-box {
+            background-color: #e3f2fd;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Inputs para mobile */
+        input[type="radio"], input[type="number"] {
+            transform: scale(1.1);
+            margin: 5px;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            max-width: 200px;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 480px) {
+            .menu-item {
+                flex-direction: row;
+                font-size: 0.9rem;
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .menu-item i {
+                font-size: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .wave-concept h2 {
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (min-width: 600px) {
+            .app-container {
+                padding: 20px;
+            }
+            
+            .wave-concept {
+                padding: 20px;
+            }
+            
+            .phenomenon-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .menu-item {
+                font-size: 1rem;
+                min-width: 140px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .wave-phenomena {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .wave-concept h2 {
+                font-size: 1.5rem;
+            }
+            
+            .accessibility-button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .wave-phenomena {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .wave-concept {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+    
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-toolbar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+        <button id="contrast-toggle" class="accessibility-button" aria-pressed="false">
+            <i class="fas fa-adjust"></i> <span class="sr-only">Alto</span> Contraste
+        </button>
+        <button id="increase-font" class="accessibility-button">
+            <i class="fas fa-text-height"></i> Aumentar Letra
+        </button>
+        <button id="decrease-font" class="accessibility-button">
+            <i class="fas fa-text-width"></i> Diminuir Letra
+        </button>
+        <button id="reset-font" class="accessibility-button">
+            <i class="fas fa-font"></i> Tamanho Normal
+        </button>
+    </div>
+    
+    <div class="app-container">
+        <header>
+            <h1>Fenômenos Ondulatórios</h1>
+            <p class="subtitle">Compreenda os principais comportamentos das ondas</p>
+
+            <!-- Menu inferior -->
+            <nav class="bottom-menu">
+                <ul class="menu-list">
+                    <li class="menu-item active" data-tab="fenomenos" tabindex="0" role="button" aria-pressed="true">
+                        <i class="fas fa-water"></i> <span>Fenômenos</span>
+                    </li>
+                    <li class="menu-item" data-tab="aplicacoes" tabindex="0" role="button" aria-pressed="false">
+                        <i class="fas fa-microscope"></i> <span>Aplicações</span>
+                    </li>
+                    <li class="menu-item" data-tab="simulacoes" tabindex="0" role="button" aria-pressed="false">
+                        <i class="fas fa-vial"></i> <span>Exercícios</span>
+                    </li>
+                </ul>
+            </nav>
+            
+        </header>
+        
+        <main id="main-content" class="main-content">
+            <!-- Conteúdo das Abas -->
+            <div class="tab-content" id="tab-fenomenos" role="tabpanel" aria-labelledby="tab-fenomenos">
+                <section class="wave-concept" tabindex="0">
+                    <h2>Reflexão de Ondas</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A reflexão ocorre quando uma onda encontra um obstáculo e retorna ao meio de origem. Existem dois tipos principais:</p>
+                                <ul>
+                                    <li><strong>Reflexão em extremidade fixa:</strong> A onda sofre inversão de fase (mudança de 180°).</li>
+                                    <li><strong>Reflexão em extremidade livre:</strong> A onda não sofre inversão de fase.</li>
+                                </ul>
+                                <div class="formula">Lei da Reflexão: θ<sub>incidência</sub> = θ<sub>reflexão</sub></div>
+                                <p>O ângulo de incidência é igual ao ângulo de reflexão, ambos medidos em relação à normal (linha perpendicular à superfície).</p>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/waves/u10l3a.cfm/image.png" alt="Diagrama da reflexão de ondas mostrando ângulos iguais" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Eco (reflexão do som)</li>
+                                        <li>Espelhos (reflexão da luz)</li>
+                                        <li>Ondas em cordas presas em paredes</li>
+                                        <li>Radar (reflexão de ondas eletromagnéticas)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Outras seções mantidas com a mesma estrutura -->
+                 <section class="wave-concept" tabindex="0">
+                    <h2>Refração de Ondas</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A refração ocorre quando uma onda passa de um meio para outro com propriedades diferentes, alterando sua velocidade e direção.</p>
+                                <p>A mudança de velocidade causa a alteração na direção de propagação, exceto quando a onda incide perpendicularmente à interface.</p>
+                                <div class="formula">Lei de Snell: n<sub>1</sub>senθ<sub>1</sub> = n<sub>2</sub>senθ<sub>2</sub></div>
+                                <p>Onde n é o índice de refração do meio e θ é o ângulo em relação à normal.</p>
+                                <p>Quando a onda entra em um meio mais denso (maior n), diminui sua velocidade e se aproxima da normal.</p>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/refrn/u14l1a.cfm/image.png" alt="Diagrama da refração mostrando mudança de direção" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Canudo parecendo "quebrado" em um copo d'água</li>
+                                        <li>Arco-íris (refração da luz em gotas de água)</li>
+                                        <li>Lentes ópticas (óculos, telescópios)</li>
+                                        <li>Ondas sísmicas mudando de direção em camadas da Terra</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Difração de Ondas</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A difração é o fenômeno onde uma onda contorna obstáculos ou se espalha ao passar por aberturas. É mais pronunciada quando o tamanho do obstáculo ou abertura é comparável ao comprimento de onda.</p>
+                                <div class="formula">Ângulo de difração: θ ≈ λ / a</div>
+                                <p>Onde λ é o comprimento de onda e a é o tamanho da abertura.</p>
+                                <p>Quanto maior o comprimento de onda em relação ao tamanho da abertura, maior o efeito de difração.</p>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/light/u12l3b.cfm/image.png" alt="Diagrama mostrando difração por uma fenda" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Ouvir som mesmo com obstáculos (portas abertas)</li>
+                                        <li>CDs/DVDs mostrando cores (difração da luz)</li>
+                                        <li>Antenas de rádio captando sinais mesmo sem linha direta</li>
+                                        <li>Microscópios eletrônicos (difração de elétrons)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Interferência de Ondas</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A interferência ocorre quando duas ou mais ondas se superpõem no mesmo ponto do espaço. Pode ser:</p>
+                                <ul>
+                                    <li><strong>Construtiva:</strong> Cristas coincidem com cristas - amplitudes se somam.</li>
+                                    <li><strong>Destrutiva:</strong> Cristas coincidem com vales - amplitudes se subtraem.</li>
+                                </ul>
+                                <div class="formula">Interferência construtiva: Δd = nλ</div>
+                                <div class="formula">Interferência destrutiva: Δd = (n + ½)λ</div>
+                                <p>Onde Δd é a diferença de percurso e n é um número inteiro.</p>
+                            </div>
+                            <div>
+                                <div class="interference-diagram">
+                                    <img src="https://www.physicsclassroom.com/getattachment/Class/light/u12l3c.cfm/image.png" alt="Diagrama mostrando interferência construtiva e destrutiva" class="wave-diagram">
+                                </div>
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Óleo na água mostrando cores (interferência da luz)</li>
+                                        <li>Cancelamento de ruído em fones de ouvido</li>
+                                        <li>Experimento de Young (fendas duplas)</li>
+                                        <li>Batimentos sonoros (interferência de frequências próximas)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Polarização de Ondas</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A polarização é um fenômeno que ocorre com ondas transversais (como a luz), onde a vibração é restrita a um plano específico.</p>
+                                <p>Ondas longitudinais (como o som) não podem ser polarizadas, pois vibram na mesma direção da propagação.</p>
+                                <p>Tipos de polarização:</p>
+                                <ul>
+                                    <li>Linear (em um único plano)</li>
+                                    <li>Circular (plano de vibração gira)</li>
+                                    <li>Elíptica (caso intermediário)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/light/u12l1e.cfm/image.png" alt="Diagrama mostrando polarização da luz" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Óculos de sol polarizados</li>
+                                        <li>Telas LCD (usam polarização da luz)</li>
+                                        <li>Comunicações por rádio (antenas polarizadas)</li>
+                                        <li>Fotografia (filtros polarizadores)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Ressonância</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <p>A ressonância ocorre quando um sistema é excitado em sua frequência natural de oscilação, resultando em grande amplitude de vibração.</p>
+                                <p>Condição para ressonância:</p>
+                                <div class="formula">f<sub>fonte</sub> = f<sub>natural</sub></div>
+                                <p>Onde f<sub>fonte</sub> é a frequência da força externa e f<sub>natural</sub> é a frequência natural do sistema.</p>
+                                <p>Na ressonância, a energia é transferida com máxima eficiência para o sistema oscilante.</p>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/sound/u11l5a.cfm/image.png" alt="Diagrama mostrando ressonância em um tubo" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos Práticos:</div>
+                                    <ul>
+                                        <li>Quebra de copo por som (frequência ressonante)</li>
+                                        <li>Circuitos sintonizados em rádios</li>
+                                        <li>Ponte de Tacoma Narrows (ressonância com vento)</li>
+                                        <li>Instrumentos musicais (caixas de ressonância)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="tab-aplicacoes" style="display: none;" role="tabpanel" aria-labelledby="tab-aplicacoes">
+                <section class="wave-concept" tabindex="0">
+                    <h2>Aplicações Tecnológicas</h2>
+                    <div class="concept-content">
+                        <h3>1. Comunicações</h3>
+                        <ul>
+                            <li><strong>Rádio e TV:</strong> Uso de reflexão e difração de ondas eletromagnéticas</li>
+                            <li><strong>Fibra óptica:</strong> Reflexão interna total para transmissão de dados</li>
+                            <li><strong>Radar:</strong> Reflexão de micro-ondas para detecção de objetos</li>
+                        </ul>
+                        
+                        <h3>2. Medicina</h3>
+                        <ul>
+                            <li><strong>Ultrassom:</strong> Reflexão de ondas sonoras de alta frequência</li>
+                            <li><strong>Ressonância Magnética:</strong> Uso de ondas de rádio e campos magnéticos</li>
+                            <li><strong>Laser:</strong> Luz coerente para cirurgias e tratamentos</li>
+                        </ul>
+                        
+                        <h3>3. Engenharia</h3>
+                        <ul>
+                            <li><strong>Testes não destrutivos:</strong> Ultrassom para detectar falhas em materiais</li>
+                            <li><strong>Controle de ruído:</strong> Interferência destrutiva para cancelar sons</li>
+                            <li><strong>Sismologia:</strong> Estudo de ondas sísmicas para prever terremotos</li>
+                        </ul>
+                        
+                        <h3>4. Instrumentos Ópticos</h3>
+                        <ul>
+                            <li><strong>Microscópios:</strong> Difração e interferência para aumentar resolução</li>
+                            <li><strong>Telescópios:</strong> Coleta e focalização de ondas eletromagnéticas</li>
+                            <li><strong>Holografia:</strong> Registro de padrões de interferência da luz</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Aplicações no Cotidiano</h2>
+                    <div class="concept-content">
+                        <div class="phenomenon-grid">
+                            <div>
+                                <h3>1. Sonar e Ecobatimetria</h3>
+                                <p>Uso da reflexão de ondas sonoras para mapear o fundo do mar ou detectar objetos submarinos.</p>
+                                
+                                <h3>2. Forno de Micro-ondas</h3>
+                                <p>Ressonância das moléculas de água com micro-ondas de 2,45 GHz para aquecer alimentos.</p>
+                                
+                                <h3>3. Fotografia</h3>
+                                <p>Filtros polarizadores reduzem reflexos e realçam cores usando polarização da luz.</p>
+                            </div>
+                            <div>
+                                <h3>4. Instrumentos Musicais</h3>
+                                <p>Ressonância em colunas de ar (sopro) ou cordas vibrando produz notas musicais.</p>
+                                
+                                <h3>5. Wi-Fi e Celulares</h3>
+                                <p>Difração de ondas de rádio permite conexão mesmo sem linha direta de visão.</p>
+                                
+                                <h3>6. Arco-íris</h3>
+                                <p>Refração e dispersão da luz em gotículas de água no ar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="tab-simulacoes" style="display: none;" role="tabpanel" aria-labelledby="tab-simulacoes">
+                                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Exercícios Interativos</h2>
+                    <div class="concept-content">
+                        <h3>Questão 1: Reflexão</h3>
+                        <p>Uma onda sonora com comprimento de onda de 1,5 m incide em uma parede plana com ângulo de 30°. Qual será o ângulo de reflexão?</p>
+                        <div style="margin: 15px 0;">
+                            <input type="radio" id="q1a" name="q1" value="15">
+                            <label for="q1a">15°</label><br>
+                            <input type="radio" id="q1b" name="q1" value="30">
+                            <label for="q1b">30°</label><br>
+                            <input type="radio" id="q1c" name="q1" value="45">
+                            <label for="q1c">45°</label><br>
+                            <input type="radio" id="q1d" name="q1" value="60">
+                            <label for="q1d">60°</label>
+                        </div>
+                        <button class="learn-more" onclick="checkAnswer('q1', '30')">Verificar Resposta</button>
+                        <div id="q1Feedback" style="margin-top: 10px;"></div>
+                        
+                        <h3>Questão 2: Refração</h3>
+                        <p>Uma onda luminosa passa do ar (n=1,0) para a água (n=1,33) com ângulo de incidência de 45°. Calcule o ângulo de refração (use sen 45° ≈ 0,707).</p>
+                        <input type="number" id="q2answer" placeholder="Digite sua resposta em graus" style="padding: 8px; width: 200px; margin: 10px 0;">
+                        <button class="learn-more" onclick="checkCalculation('q2', 32.1)">Verificar Resposta</button>
+                        <div id="q2Feedback" style="margin-top: 10px;"></div>
+                    </div>
+                </section>
+            </div>
+                
+            </div>
+
+            <!-- Outras abas mantidas com a mesma estrutura -->
+            
+            <a href="index.html" class="voltar">← Voltar para o site principal</a>
+        </main>
+        
+        
+        <footer>
+            <p>© 2023 Onda Libras - Todos os direitos reservados</p>
+            <p>Desenvolvido para educação inclusiva</p>
+        </footer>
+    </div>
+
+    <!-- VLibras Plugin -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        // Inicializa o VLibras
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalization: 'https://vlibras.gov.br/config/config.json',
+            opacity: 0.9,
+            position: 'R',
+            avatar: 'avatar3D'
+        });
+        
+        // Funções para verificação de respostas
+        function checkAnswer(questionId, correctValue) {
+            const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedbackDiv = document.getElementById(`${questionId}Feedback`);
+            
+            if (!selected) {
+                feedbackDiv.innerHTML = '<p style="color: var(--accent-color);">Selecione uma opção!</p>';
+                return;
+            }
+            
+            if (selected.value === correctValue) {
+                feedbackDiv.innerHTML = '<p style="color: green;">✓ Correto! A lei da reflexão estabelece que o ângulo de incidência é igual ao ângulo de reflexão.</p>';
+            } else {
+                feedbackDiv.innerHTML = '<p style="color: var(--accent-color);">✗ Incorreto. Lembre-se que na reflexão, o ângulo de incidência é sempre igual ao ângulo de reflexão.</p>';
+            }
+        }
+        
+        function checkCalculation(questionId, correctValue) {
+            const answer = parseFloat(document.getElementById(`${questionId}answer`).value);
+            const feedbackDiv = document.getElementById(`${questionId}Feedback`);
+            
+            if (isNaN(answer)) {
+                feedbackDiv.innerHTML = '<p style="color: var(--accent-color);">Digite um número válido!</p>';
+                return;
+            }
+            
+            // Permite margem de erro de 0,5°
+            if (Math.abs(answer - correctValue) < 0.5) {
+                feedbackDiv.innerHTML = `<p style="color: green;">✓ Correto! O ângulo de refração é aproximadamente ${correctValue}°.</p>`;
+            } else {
+                feedbackDiv.innerHTML = `<p style="color: var(--accent-color);">✗ Incorreto. A resposta correta é aproximadamente ${correctValue}°. Use a Lei de Snell: n₁senθ₁ = n₂senθ₂</p>`;
+            }
+        }
+        
+        // Alternância de abas baseada no menu inferior
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Alterna a aba ativa no menu
+                document.querySelectorAll('.menu-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+
+                // Alterna o conteúdo visível com o estilo correto
+                const tab = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    if (content.id === `tab-${tab}`) {
+                        content.style.display = 'block';
+                        content.setAttribute('aria-hidden', 'false');
+                    } else {
+                        content.style.display = 'none';
+                        content.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Atualiza o VLibras para o novo conteúdo
+                updateVLibrasContent();
+            });
+            
+            // Adiciona navegação por teclado
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Funcionalidades de acessibilidade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alto Contraste
+            const contrastToggle = document.getElementById('contrast-toggle');
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                const isPressed = document.body.classList.contains('high-contrast');
+                this.setAttribute('aria-pressed', isPressed);
+                localStorage.setItem('highContrast', isPressed);
+            });
+            
+            // Verifica se o usuário já tinha alto contraste ativado
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+                contrastToggle.setAttribute('aria-pressed', 'true');
+            }
+            
+            // Tamanho da Fonte
+            const increaseFont = document.getElementById('increase-font');
+            const decreaseFont = document.getElementById('decrease-font');
+            const resetFont = document.getElementById('reset-font');
+            
+            increaseFont.addEventListener('click', function() {
+                if (document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('large-text')) {
+                    document.body.classList.remove('large-text');
+                    document.body.classList.add('extra-large-text');
+                } else {
+                    document.body.classList.add('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('extra') ? 'extra-large' : 'large');
+            });
+            
+            decreaseFont.addEventListener('click', function() {
+                if (!document.body.classList.contains('large-text') && !document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('extra-large-text')) {
+                    document.body.classList.remove('extra-large-text');
+                    document.body.classList.add('large-text');
+                } else {
+                    document.body.classList.remove('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('large-text') ? 'large' : 'normal');
+            });
+            
+            resetFont.addEventListener('click', function() {
+                document.body.classList.remove('large-text', 'extra-large-text');
+                localStorage.setItem('fontSize', 'normal');
+            });
+            
+            // Verifica o tamanho da fonte salvo
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize === 'large') {
+                document.body.classList.add('large-text');
+            } else if (savedFontSize === 'extra-large') {
+                document.body.classList.add('extra-large-text');
+            }
+        });
+        
+        // Função para atualizar o VLibras quando conteúdo dinâmico for carregado
+        function updateVLibrasContent() {
+            if (window.VLibras && window.VLibras.Widget.updateContent) {
+                window.VLibras.Widget.updateContent();
+            }
+        }
+    </script>
+</body>
+</html>

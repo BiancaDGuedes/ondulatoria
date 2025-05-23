@@ -397,7 +397,7 @@
                     <h2>Fenômenos Ondulatórios</h2>
                     <div class="concept-content">
                         <p>Reflexão, refração, difração e interferência - como as ondas interagem com o ambiente.</p>
-                        <button class="learn-more" aria-label="Aprender mais sobre fenômenos ondulatórios">Aprender Mais</button>
+                        <a href="fenomenos.html" class="learn-more">Aprenda mais</a>
                     </div>
                 </section>
                 
@@ -405,15 +405,7 @@
                     <h2>Ondas Sonoras</h2>
                     <div class="concept-content">
                         <p>Como funcionam as ondas sonoras e sua importância para a comunidade surda.</p>
-                        <button class="learn-more" aria-label="Aprender mais sobre ondas sonoras">Aprender Mais</button>
-                    </div>
-                </section>
-                
-                <section class="wave-concept" tabindex="0">
-                    <h2>Aplicações Práticas</h2>
-                    <div class="concept-content">
-                        <p>Como o conhecimento das ondas é aplicado em tecnologias assistivas para surdos.</p>
-                        <button class="learn-more" aria-label="Aprender mais sobre aplicações práticas">Aprender Mais</button>
+                        <a href="sonoras.html" class="learn-more">Aprenda mais</a>
                     </div>
                 </section>
             </div>
@@ -537,12 +529,10 @@
                 this.setAttribute('aria-pressed', isPressed);
                 localStorage.setItem('highContrast', isPressed);
             });
-            
-            // Verifica se o usuário já tinha alto contraste ativado
-            if (localStorage.getItem('highContrast')) {
-                document.body.classList.add('high-contrast');
-                contrastToggle.setAttribute('aria-pressed', 'true');
-            }
+
+            // Começa sempre com o contraste normal
+            document.body.classList.remove('high-contrast');
+            contrastToggle.setAttribute('aria-pressed', 'false');
             
             // Tamanho da Fonte
             const increaseFont = document.getElementById('increase-font');

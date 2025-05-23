@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ondas Sonoras | Onda Libras</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --background-color: #ECF0F1;
+            --text-color: #2C3E50;
+            --card-color: #FFFFFF;
+            --font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+            font-size: var(--font-size);
+            transition: background-color 0.3s, color 0.3s, font-size 0.3s;
+        }
+        
+        /* Alto Contraste */
+        body.high-contrast {
+            --primary-color: #000000;
+            --secondary-color: #0000FF;
+            --accent-color: #FF0000;
+            --background-color: #FFFFFF;
+            --text-color: #000000;
+            --card-color: #FFFFFF;
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+        
+        body.high-contrast .wave-concept {
+            border: 2px solid #000000 !important;
+        }
+        
+        body.high-contrast .menu-item {
+            border: 2px solid #000000 !important;
+        }
+        
+        /* Tamanho da Fonte */
+        body.large-text {
+            --font-size: 20px;
+        }
+        
+        body.extra-large-text {
+            --font-size: 24px;
+        }
+        
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .wave-concept {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .wave-concept:hover {
+            transform: translateY(-5px);
+        }
+        
+        .wave-concept h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+        }
+        
+        .wave-concept h2::before {
+            content: "→";
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .concept-content {
+            display: flex;
+            flex-direction: column;
+            min-height: auto;
+        }
+        
+        .avatar-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 15px;
+        }
+        
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .learn-more {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .learn-more:hover, .learn-more:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: var(--primary-color);
+            border-top: 2px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        /* VLibras Customization */
+        .vw-access-button {
+            background-color: var(--accent-color) !important;
+            border-radius: 50% !important;
+            width: 50px !important;
+            height: 50px !important;
+        }
+        
+        div[vw-access-button] {
+            left: auto !important;
+            right: 15px !important;
+            bottom: 15px !important;
+        }
+        
+        /* Accessibility Features */
+        .skip-link {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            z-index: 1000;
+        }
+        
+        /* Accessibility Toolbar */
+        .accessibility-toolbar {
+            background-color: var(--primary-color);
+            padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .accessibility-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 0.8rem;
+        }
+        
+        .accessibility-button:hover, .accessibility-button:focus {
+            background-color: #2980B9;
+            outline: 2px solid var(--accent-color);
+        }
+        
+        .accessibility-button.active {
+            background-color: var(--accent-color);
+        }
+        
+        .glossary-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .glossary-list li {
+            background-color: #fdfdfd;
+            padding: 8px 12px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+        
+        .bottom-menu {
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid #fff;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-list {
+            list-style: none;
+            display: flex;
+            gap: 1px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .menu-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-left: 1px solid #2980b9;
+            border-right: 1px solid #2980b9;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+            font-size: 0.8rem;
+            flex: 1;
+            min-width: max-content;
+            justify-content: center;
+        }
+
+        .menu-item:hover, .menu-item:focus {
+            background-color: #2980b9;
+            outline: 2px solid var(--accent-color);
+        }
+
+        .menu-item.active {
+            background-color: #e74c3c;
+        }
+
+        .sound-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .tab-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* Focus styles for better keyboard navigation */
+        a:focus, button:focus, input:focus, [tabindex="0"]:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Hidden content for screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Diagram styles */
+        .wave-diagram {
+            width: 100%;
+            max-width: 100%;
+            margin: 15px auto;
+            display: block;
+            border-radius: 8px;
+            height: auto;
+        }
+        
+        .formula {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-family: "Courier New", monospace;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .sound-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .example-box {
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 4px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .frequency-spectrum {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .audio-visualizer {
+            background-color: #2c3e50;
+            height: 100px;
+            border-radius: 8px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visualizer-bar {
+            position: absolute;
+            bottom: 0;
+            width: 6px;
+            background-color: #3498db;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .human-ear-range {
+            height: 25px;
+            background: linear-gradient(90deg, #f5f5f5 0%, #3498db 20%, #3498db 80%, #f5f5f5 100%);
+            border-radius: 12px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .frequency-marker {
+            position: absolute;
+            top: -18px;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+        }
+        
+        .voltar {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .voltar:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 480px) {
+            .menu-item {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .wave-concept h2 {
+                font-size: 1.4rem;
+            }
+            
+            .accessibility-button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 600px) {
+            .app-container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .wave-concept {
+                padding: 20px;
+            }
+            
+            .sound-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            .menu-item {
+                font-size: 1rem;
+            }
+            
+            .accessibility-button {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .sound-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .wave-concept h2 {
+                font-size: 1.5rem;
+            }
+            
+            .audio-visualizer {
+                height: 120px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .sound-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .wave-concept {
+                padding: 25px;
+            }
+            
+            .audio-visualizer {
+                height: 150px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+    
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-toolbar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+        <button id="contrast-toggle" class="accessibility-button" aria-pressed="false">
+            <i class="fas fa-adjust"></i> <span class="sr-only">Alto</span> Contraste
+        </button>
+        <button id="increase-font" class="accessibility-button">
+            <i class="fas fa-text-height"></i> Aumentar Letra
+        </button>
+        <button id="decrease-font" class="accessibility-button">
+            <i class="fas fa-text-width"></i> Diminuir Letra
+        </button>
+        <button id="reset-font" class="accessibility-button">
+            <i class="fas fa-font"></i> Tamanho Normal
+        </button>
+    </div>
+    
+    <div class="app-container">
+        <header>
+            <h1>Ondas Sonoras</h1>
+            <p class="subtitle">Compreenda a física do som e sua importância para a comunidade surda</p>
+            <nav class="bottom-menu">
+                <ul class="menu-list">
+                    <li class="menu-item active" data-tab="conceitos" tabindex="0" role="button" aria-pressed="true">
+                        <i class="fas fa-wave-square"></i> <span>Conceitos</span>
+                    </li>
+                    <li class="menu-item" data-tab="percepcao" tabindex="0" role="button" aria-pressed="false">
+                        <i class="fas fa-ear-deaf"></i> <span>Percepção</span>
+                    </li>
+                    <li class="menu-item" data-tab="tecnologia" tabindex="0" role="button" aria-pressed="false">
+                        <i class="fas fa-assistive-listening-systems"></i> <span>Tecnologia</span>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main id="main-content" class="main-content">
+            <!-- Conteúdo das Abas -->
+            <div class="tab-content" id="tab-conceitos" role="tabpanel" aria-labelledby="tab-conceitos">
+                <section class="wave-concept" tabindex="0">
+                    <h2>O que são Ondas Sonoras?</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <p>Ondas sonoras são perturbações mecânicas longitudinais que se propagam através de um meio material (sólido, líquido ou gasoso), transportando energia sem transportar matéria.</p>
+                                <p>São produzidas pela vibração de corpos materiais e caracterizam-se por serem:</p>
+                                <ul>
+                                    <li><strong>Longitudinais:</strong> As partículas do meio vibram na mesma direção da propagação</li>
+                                    <li><strong>Mecânicas:</strong> Requerem um meio material para se propagar</li>
+                                    <li><strong>Tridimensionais:</strong> Propagam-se em todas as direções a partir da fonte</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/sound/u11l1a.cfm/image.png" alt="Diagrama de onda sonora mostrando compressões e rarefações" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos de Fontes Sonoras:</div>
+                                    <ul>
+                                        <li>Cordas vocais (voz humana)</li>
+                                        <li>Altifalantes</li>
+                                        <li>Instrumentos musicais</li>
+                                        <li>Batidas, explosões, colisões</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Características Físicas</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Velocidade do Som</h3>
+                                <p>Depende do meio de propagação:</p>
+                                <div class="formula">v = √(B/ρ)</div>
+                                <p>Onde B é o módulo de elasticidade volumétrica e ρ é a densidade do meio.</p>
+                                <ul>
+                                    <li>Ar (20°C): 343 m/s</li>
+                                    <li>Água: ~1.480 m/s</li>
+                                    <li>Aço: ~5.100 m/s</li>
+                                </ul>
+                                
+                                <h3>Intensidade Sonora</h3>
+                                <p>Potência por unidade de área:</p>
+                                <div class="formula">I = P/A (W/m²)</div>
+                                <p>O limiar da audição humana é ~10⁻¹² W/m²</p>
+                            </div>
+                            <div>
+                                <h3>Frequência e Período</h3>
+                                <p>Determinam a altura do som:</p>
+                                <div class="formula">f = 1/T (Hz)</div>
+                                <div class="human-ear-range">
+                                    <span class="frequency-marker" style="left: 0%;">20 Hz</span>
+                                    <span class="frequency-marker" style="left: 50%;">1.000 Hz</span>
+                                    <span class="frequency-marker" style="left: 100%;">20.000 Hz</span>
+                                </div>
+                                <p>O ouvido humano percebe sons entre 20 Hz e 20.000 Hz</p>
+                                
+                                <h3>Amplitude</h3>
+                                <p>Relacionada ao volume (pressão sonora):</p>
+                                <div class="formula">Nível sonoro: β = 10 log(I/I₀) (dB)</div>
+                                <p>Onde I₀ = 10⁻¹² W/m² (limiar de audição)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Propagação do Som</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Fenômenos Ondulatórios</h3>
+                                <p>O som apresenta todos os fenômenos característicos das ondas:</p>
+                                <ul>
+                                    <li><strong>Reflexão:</strong> Eco, reverberação</li>
+                                    <li><strong>Refração:</strong> Mudança de direção em meios diferentes</li>
+                                    <li><strong>Difração:</strong> Contorno de obstáculos</li>
+                                    <li><strong>Interferência:</strong> Batimentos, cancelamento</li>
+                                    <li><strong>Ressonância:</strong> Amplificação em frequências específicas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Ondas Estacionárias</h3>
+                                <p>Formam-se em cavidades e tubos sonoros:</p>
+                                <div class="formula">f<sub>n</sub> = n(v/2L) (n = 1, 2, 3...)</div>
+                                <p>Onde L é o comprimento da cavidade.</p>
+                                <img src="https://www.physicsclassroom.com/getattachment/Class/sound/u11l5a.cfm/image.png" alt="Ondas estacionárias em tubos sonoros" class="wave-diagram">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Qualidades do Som</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Altura</h3>
+                                <p>Determinada pela frequência:</p>
+                                <ul>
+                                    <li>Frequência alta → Som agudo</li>
+                                    <li>Frequência baixa → Som grave</li>
+                                </ul>
+                                
+                                <h3>Intensidade</h3>
+                                <p>Relacionada à amplitude:</p>
+                                <ul>
+                                    <li>Amplitude grande → Som forte</li>
+                                    <li>Amplitude pequena → Som fraco</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Timbre</h3>
+                                <p>Característica que permite distinguir fontes sonoras diferentes que emitem sons com mesma altura e intensidade.</p>
+                                <p>Determinado pela forma de onda e harmônicos presentes.</p>
+                                
+                                <h3>Duração</h3>
+                                <p>Tempo que o som permanece audível.</p>
+                                <div class="audio-visualizer" id="timbreVisualizer">
+                                    <!-- Bars will be added by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="tab-percepcao" style="display: none;" role="tabpanel" aria-labelledby="tab-percepcao">
+                <section class="wave-concept" tabindex="0">
+                    <h2>Percepção Humana do Som</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Ouvido Humano</h3>
+                                <p>Faixa de frequência audível: 20 Hz a 20.000 Hz (varia com idade e exposição)</p>
+                                <p>Faixa de intensidade: 0 dB (limiar) a ~120 dB (limiar da dor)</p>
+                                
+                                <h3>Psicoacústica</h3>
+                                <p>Estudo da percepção subjetiva do som:</p>
+                                <ul>
+                                    <li>Frequência → Altura tonal</li>
+                                    <li>Amplitude → Loudness (volume percebido)</li>
+                                    <li>Espectro → Timbre</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/HumanEar.jpg/500px-HumanEar.jpg" alt="Anatomia do ouvido humano" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Níveis de Pressão Sonora:</div>
+                                    <ul>
+                                        <li>0 dB: Limiar da audição</li>
+                                        <li>60 dB: Conversa normal</li>
+                                        <li>85 dB: Danoso com exposição prolongada</li>
+                                        <li>120 dB: Limiar da dor</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Surdez e Perda Auditiva</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Tipos de Perda Auditiva</h3>
+                                <ul>
+                                    <li><strong>Condutiva:</strong> Problemas no ouvido externo/médio</li>
+                                    <li><strong>Neurossensorial:</strong> Danos às células ciliadas ou nervo auditivo</li>
+                                    <li><strong>Mista:</strong> Combinação das duas</li>
+                                </ul>
+                                
+                                <h3>Causas Comuns</h3>
+                                <ul>
+                                    <li>Exposição a ruídos intensos</li>
+                                    <li>Envelhecimento (presbiacusia)</li>
+                                    <li>Doenças e infecções</li>
+                                    <li>Fatores genéticos</li>
+                                    <li>Traumas</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Audiograma</h3>
+                                <p>Gráfico que mostra os limiares auditivos em diferentes frequências:</p>
+                                <img src="https://www.hear-it.org/sites/default/files/audiogram_0.jpg" alt="Exemplo de audiograma" class="wave-diagram">
+                                <p>Usado para diagnosticar e classificar o tipo e grau de perda auditiva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Percepção Vibratória</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Experiência da Comunidade Surda</h3>
+                                <p>Muitas pessoas surdas desenvolvem maior sensibilidade a vibrações sonoras, permitindo:</p>
+                                <ul>
+                                    <li>Perceber música através de vibrações</li>
+                                    <li>Identificar batidas e ritmos</li>
+                                    <li>Sentir a intensidade de sons ambientais</li>
+                                </ul>
+                                
+                                <h3>Tecnologias de Vibração</h3>
+                                <p>Dispositivos que convertem som em vibrações táteis:</p>
+                                <ul>
+                                    <li>Alfabetos táteis</li>
+                                    <li>Relógios vibratórios</li>
+                                    <li>Sistemas de alerta por vibração</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://www.signcommunity.org.uk/wp-content/uploads/2021/03/vibration-sound-system.jpg" alt="Sistema de vibração para percepção musical" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos de Percepção Vibratória:</div>
+                                    <ul>
+                                        <li>Sentir o baixo em shows musicais</li>
+                                        <li>Identificar batidas de porta ou campainha</li>
+                                        <li>Perceber o ronco de motores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tab-content" id="tab-tecnologia" style="display: none;" role="tabpanel" aria-labelledby="tab-tecnologia">
+                <section class="wave-concept" tabindex="0">
+                    <h2>Tecnologias Assistivas</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Aparelhos Auditivos</h3>
+                                <p>Amplificam sons específicos baseados na perda auditiva do usuário:</p>
+                                <ul>
+                                    <li>Analógicos: Amplificam todos os sons</li>
+                                    <li>Digitais: Processamento seletivo de frequências</li>
+                                    <li>Recarregáveis: Tecnologia mais moderna</li>
+                                </ul>
+                                
+                                <h3>Implantes Cocleares</h3>
+                                <p>Dispositivos eletrônicos que estimulam diretamente o nervo auditivo:</p>
+                                <ul>
+                                    <li>Microfone externo capta sons</li>
+                                    <li>Processador converte em sinais elétricos</li>
+                                    <li>Eletrodos estimulam a cóclea</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://www.nidcd.nih.gov/sites/default/files/Content%20Images/cochlear-implant.jpg" alt="Diagrama de implante coclear" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Diferenças Principais:</div>
+                                    <ul>
+                                        <li>Aparelhos amplificam - Implantes convertem</li>
+                                        <li>Aparelhos para perdas leves a severas</li>
+                                        <li>Implantes para perdas profundas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Sistemas de Vibração</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Subpac</h3>
+                                <p>Mochila/cinto que converte áudio em vibrações precisas:</p>
+                                <ul>
+                                    <li>Permite sentir música e diálogos</li>
+                                    <li>Usado por DJs surdos e em experiências imersivas</li>
+                                    <li>Resposta de frequência de 5Hz a 130Hz</li>
+                                </ul>
+                                
+                                <h3>SoundShirt</h3>
+                                <p>Camisa com 16 atuadores que convertem música em vibrações:</p>
+                                <ul>
+                                    <li>Cada instrumento mapeado para diferentes áreas</li>
+                                    <li>Permite "ouvir" orquestras completas</li>
+                                    <li>Tecnologia usada em teatros e shows</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://miro.medium.com/v2/resize:fit:1400/1*_5QJX3G5UQm4Y4pQzQJQEg.jpeg" alt="Pessoa usando SoundShirt" class="wave-diagram">
+                                <div class="example-box">
+                                    <div class="example-title">Aplicações:</div>
+                                    <ul>
+                                        <li>Experiências musicais para surdos</li>
+                                        <li>Treinamento de músicos surdos</li>
+                                        <li>Terapia para crianças com implantes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="wave-concept" tabindex="0">
+                    <h2>Conversão de Som para Luz</h2>
+                    <div class="concept-content">
+                        <div class="sound-grid">
+                            <div>
+                                <h3>Visualizadores de Som</h3>
+                                <p>Tecnologias que convertem características sonoras em estímulos visuais:</p>
+                                <ul>
+                                    <li><strong>Espectrogramas:</strong> Mostram frequências ao longo do tempo</li>
+                                    <li><strong>Medidores de Nível:</strong> Indicam intensidade sonora</li>
+                                    <li><strong>Visualizadores musicais:</strong> Representam ritmo e melodia</li>
+                                </ul>
+                                
+                                <h3>Aplicações para Surdos</h3>
+                                <ul>
+                                    <li>Alertas visuais para sons ambientais</li>
+                                    <li>Ferramentas para aprendizado de fala</li>
+                                    <li>Sistemas de feedback visual para músicos</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="audio-visualizer" id="soundVisualizer">
+                                    <!-- Visualization will be generated by JavaScript -->
+                                </div>
+                                <div class="example-box">
+                                    <div class="example-title">Exemplos de Uso:</div>
+                                    <ul>
+                                        <li>Softwares de treinamento de fala</li>
+                                        <li>Sistemas de alarme visual</li>
+                                        <li>Aplicativos para visualização musical</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <a href="index.html" class="voltar">← Voltar para o site principal</a>
+        </main>
+        
+        <footer>
+            <p>© 2023 Onda Libras - Todos os direitos reservados</p>
+            <p>Desenvolvido para educação inclusiva</p>
+        </footer>
+    </div>
+
+    <!-- VLibras Plugin -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        // Inicializa o VLibras
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalization: 'https://vlibras.gov.br/config/config.json',
+            opacity: 0.9,
+            position: 'R',
+            avatar: 'avatar3D'
+        });
+        
+        // Cria visualizador de timbre
+        function createTimbreVisualizer() {
+            const container = document.getElementById('timbreVisualizer');
+            container.innerHTML = '';
+            
+            // Cria 16 barras para representar diferentes frequências
+            for (let i = 0; i < 16; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                bar.style.left = `${(i * 6) + 2}%`;
+                bar.style.height = `${Math.random() * 80 + 20}%`;
+                container.appendChild(bar);
+            }
+            
+            // Anima as barras
+            setInterval(() => {
+                const bars = container.querySelectorAll('.visualizer-bar');
+                bars.forEach(bar => {
+                    const newHeight = Math.random() * 80 + 20;
+                    bar.style.transition = 'height 0.1s ease';
+                    bar.style.height = `${newHeight}%`;
+                });
+            }, 100);
+        }
+        
+        // Cria visualizador de som
+        function createSoundVisualizer() {
+            const container = document.getElementById('soundVisualizer');
+            container.innerHTML = '';
+            
+            // Cria 32 barras para representar o espectro sonoro
+            for (let i = 0; i < 32; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                bar.style.left = `${(i * 3) + 1}%`;
+                bar.style.height = `${Math.random() * 100}%`;
+                bar.style.backgroundColor = `hsl(${i * 10}, 100%, 50%)`;
+                container.appendChild(bar);
+            }
+            
+            // Anima as barras
+            setInterval(() => {
+                const bars = container.querySelectorAll('.visualizer-bar');
+                bars.forEach((bar, index) => {
+                    const newHeight = Math.random() * 100;
+                    bar.style.transition = 'height 0.05s ease';
+                    bar.style.height = `${newHeight}%`;
+                });
+            }, 50);
+        }
+        
+        // Alternância de abas baseada no menu inferior
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Alterna a aba ativa no menu
+                document.querySelectorAll('.menu-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+
+                // Alterna o conteúdo visível com o estilo correto
+                const tab = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    if (content.id === `tab-${tab}`) {
+                        content.style.display = 'block';
+                        content.setAttribute('aria-hidden', 'false');
+                        
+                        // Inicializa visualizadores quando a aba é aberta
+                        if (tab === 'conceitos') {
+                            createTimbreVisualizer();
+                        } else if (tab === 'tecnologia') {
+                            createSoundVisualizer();
+                        }
+                    } else {
+                        content.style.display = 'none';
+                        content.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                // Atualiza o VLibras para o novo conteúdo
+                updateVLibrasContent();
+            });
+            
+            // Adiciona navegação por teclado
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Funcionalidades de acessibilidade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alto Contraste
+            const contrastToggle = document.getElementById('contrast-toggle');
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                const isPressed = document.body.classList.contains('high-contrast');
+                this.setAttribute('aria-pressed', isPressed);
+                localStorage.setItem('highContrast', isPressed);
+            });
+            
+            // Verifica se o usuário já tinha alto contraste ativado
+            if (localStorage.getItem('highContrast') === 'true') {
+                document.body.classList.add('high-contrast');
+                contrastToggle.setAttribute('aria-pressed', 'true');
+            }
+            
+            // Tamanho da Fonte
+            const increaseFont = document.getElementById('increase-font');
+            const decreaseFont = document.getElementById('decrease-font');
+            const resetFont = document.getElementById('reset-font');
+            
+            increaseFont.addEventListener('click', function() {
+                if (document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('large-text')) {
+                    document.body.classList.remove('large-text');
+                    document.body.classList.add('extra-large-text');
+                } else {
+                    document.body.classList.add('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('extra') ? 'extra-large' : 'large');
+            });
+            
+            decreaseFont.addEventListener('click', function() {
+                if (!document.body.classList.contains('large-text') && !document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('extra-large-text')) {
+                    document.body.classList.remove('extra-large-text');
+                    document.body.classList.add('large-text');
+                } else {
+                    document.body.classList.remove('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('large-text') ? 'large' : 'normal');
+            });
+            
+            resetFont.addEventListener('click', function() {
+                document.body.classList.remove('large-text', 'extra-large-text');
+                localStorage.setItem('fontSize', 'normal');
+            });
+            
+            // Verifica o tamanho da fonte salvo
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize === 'large') {
+                document.body.classList.add('large-text');
+            } else if (savedFontSize === 'extra-large') {
+                document.body.classList.add('extra-large-text');
+            }
+            
+            // Inicializa os visualizadores
+            createTimbreVisualizer();
+        });
+        
+        // Função para atualizar o VLibras quando conteúdo dinâmico for carregado
+        function updateVLibrasContent() {
+            if (window.VLibras && window.VLibras.Widget.updateContent) {
+                window.VLibras.Widget.updateContent();
+            }
+        }
+    </script>
+</body>
+</html>
