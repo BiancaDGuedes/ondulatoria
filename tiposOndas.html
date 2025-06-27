@@ -4,166 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>O que é uma Onda?</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background-color: #f7f9fc;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #007BFF;
-      color: #fff;
-      padding: 20px 40px;
-      text-align: center;
-    }
-
-    main {
-      padding: 30px 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      color: #007BFF;
-      margin-top: 40px;
-    }
-
-    p {
-      margin-bottom: 20px;
-      font-size: 1.1em;
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin: 20px 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .voltar {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    .voltar:hover {
-      background-color: #0056b3;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 50px;
-    }
-    
-    /* O cabeçalho azul */
-    .card-header {
-        background-color: #4A6190; /* Tom de azul similar ao da imagem */
-        color: #ffffff; /* Cor do texto branca */
-        width: 900px;/* Espaçamento interno (vertical e horizontal) */
-        height: 200px;
-    }
-    
-    /* Estilo para o título principal no cabeçalho */
-    .card-header h2 {
-        margin: 0; /* Remove margens padrão do título */
-        font-size: 1.2em; /* Tamanho da fonte */
-    }
-    
-    /* O corpo do card, onde o texto de definição fica */
-    .card-body {
-        padding: 20px; /* Espaçamento interno para o conteúdo */
-        color: #333; /* Cor de texto escura para o corpo */
-    }
-    
-    /* Estilo para o subtítulo "Direção de Vibração" */
-    .card-body h3 {
-        margin-top: 0; /* Remove a margem de cima do subtítulo */
-        margin-bottom: 10px; /* Adiciona um espaço abaixo do subtítulo */
-        font-size: 1.1em;
-    }
-    
-    /* Estilo para o parágrafo de definição */
-    .card-body p {
-        margin: 0; /* Remove margens padrão do parágrafo */
-        font-size: 1em;
-        line-height: 1.5; /* Melhora a legibilidade do texto */
-    }
-    
-    /* Estilo específico para a parte em negrito no parágrafo */
-    .card-body p strong {
-        color: #000000; /* Deixa o negrito um pouco mais escuro, como na imagem */
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+        <!-- Barra de Acessibilidade -->
+    <div class="accessibility-toolbar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+        <button id="contrast-toggle" class="accessibility-button" aria-pressed="false">
+            <i class="fas fa-adjust"></i> <span class="sr-only">Alto</span> Contraste
+        </button>
+        <button id="increase-font" class="accessibility-button">
+            <i class="fas fa-text-height"></i> Aumentar Letra
+        </button>
+        <button id="decrease-font" class="accessibility-button">
+            <i class="fas fa-text-width"></i> Diminuir Letra
+        </button>
+        <button id="reset-font" class="accessibility-button">
+            <i class="fas fa-font"></i> Tamanho Normal
+        </button>
+    </div>
+
   <header>
-    <h1>Tipos de Ondas</h1>
+    <h1>Classificação de Ondas</h1>
     <p>Entenda quais são os tipos de ondas na Física</p>
   </header>
 
   <main>
     <div class="container">
     
-    <div class="card-ondas">
-        <div class="card-header">
-            <h2>Classificação das ondas</h2>
-        </div>
-        <div class="card-body">
-            <h3>Direção de Vibração</h3>
-            <p><strong>Transversais:</strong> direção de vibração das partículas é perpendicular à direção de propagação da onda.</p>
-        </div>
-    </div>
-      
-    <!-- Onda Mecânica -->
-    <div class="card">
-      <h2>Onda Mecânica</h2>
+
+  <div class="card-header">
+    <h2>Natureza da Onda</h2>
+  </div>
+  <div class="card-body">
+      <h3><strong>Onda Mecânica:</strong></h3>
       <p>São ondas que precisam de um meio material para se propagar. Exemplos: som, ondas em cordas, ondas sísmicas.</p>
       <img src="https://i0.wp.com/www.scenebeta.com/archivos/www/CapturaTutorialAnimacionesydifucionesimagen12.gif" alt="Exemplo de onda mecânica">
-    </div>
-
-    <!-- Onda Eletromagnética -->
-    <div class="card">
-      <h2>Onda Eletromagnética</h2>
-      <p>São ondas que não precisam de um meio material e podem se propagar no vácuo. Ex: luz, micro-ondas, raios X, rádio.</p>
-      <img src="https://s1.static.brasilescola.uol.com.br/be/2020/02/espectro.jpg" alt="Exemplos de ondas eletromagnéticas">
-    </div>
-
-    <!-- Onda Transversal -->
-    <div class="card">
-      <h2>Onda Transversal</h2>
-      <p>Nessa onda, a vibração é perpendicular à direção da propagação. Exemplo: ondas na superfície da água, luz.</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Wave_transversal.gif" alt="Onda transversal">
-    </div>
-
-    <!-- Onda Longitudinal -->
-    <div class="card">
-      <h2>Onda Longitudinal</h2>
-      <p>O movimento das partículas ocorre na mesma direção da propagação da onda. Exemplo: som no ar.</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Wave_longitudinal.gif" alt="Onda longitudinal">
-    </div>
   </div>
 
+  <div class="card-body">
+      <h3><strong>Onda Eletromagnética:</strong></h3>
+      <p>São ondas que não precisam de um meio material e podem se propagar no vácuo. Ex: luz, micro-ondas, raios X, rádio.</p>
+      <img src="https://s1.static.brasilescola.uol.com.br/be/2020/02/espectro.jpg" alt="Exemplos de ondas eletromagnéticas">
+  </div>
+
+  <div class="card-header">
+      <h2>Direção de vibração</h2>
+  </div>
+    <div class="card-body">
+        <h3><strong>Onda Transversal:</strong></h3>
+        <p>Nessa onda, a direção de vibração das partículas é perpendicular à direção de propagação da onda. Exemplo: ondas na superfície da água, luz.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/gif-onda-transversal.gif" alt="Onda transversal">
+    </div>
+
+    <div class="card-body">
+        <h3><strong>Onda Longitudinal:</strong></h3>
+        <p>Nessa onda, a direção de vibração é a mesma que a direção de propagação da onda.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/gif-onda-longitudinal.gif" alt="Onda longitudinal">
+    </div>
+
+    <div class="card-body">
+        <h3><strong>Ondas Mistas:</strong></h3>
+        <p>São ondas em que as partículas vibram longitudinal e transversalmente, ao mesmo tempo.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/gif-onda-mista.gif" alt="Onda na água">
+    </div>
+
+    <div class="card-header">
+      <h2>Dimensionalidade</h2>
+  </div>
+    <div class="card-body">
+        <h3><strong>Unidimensionais:</strong></h3>
+        <p>Propagam-se ao longo de um meio linear, isto é, em apenas uma dimensão.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/ondas-numa-corda-unidimensional.png" alt="exemplo de onda unidimensional">
+    </div>
+
+    <div class="card-body">
+        <h3><strong>Bidimensionais:</strong></h3>
+        <p>Propagam-se em superfícies, isto é, em duas dimensões.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/onda-na-agua-bidimensional-1-1024x683.jpg" alt="exemplo de onda bidimensional">
+    </div>  
+    
+    <div class="card-body">
+        <h3><strong>Bidimensionais:</strong></h3>
+        <p>Propagam-se no espaço, isto é, em todas as direções.</p>
+      <img src="https://tiagojp.com.br/wp-content/uploads/2023/08/onda-sonora-o-ar-tridimensional-1024x681.jpg" alt="exemplo de onda tridimensional">
+    </div>
 
     <a href="index.html" class="voltar">← Voltar para o site principal</a>
   </main>
-
+  
   <footer>
     &copy; 2025 • Ondas em Libras
   </footer>
@@ -184,6 +113,140 @@
             opacity: 0.9,
             position: 'R',
             avatar: 'avatar3D'
+        });
+
+            // Interatividade dos cards
+        document.querySelectorAll('.learn-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const conceptTitle = this.closest('.wave-concept').querySelector('h2').textContent;
+            });
+            
+            button.addEventListener('focus', function() {
+                this.style.outline = `2px solid ${getComputedStyle(document.documentElement).getPropertyValue('--accent-color')}`;
+            });
+            
+            button.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+        
+        // Função para atualizar o VLibras quando conteúdo dinâmico for carregado
+        function updateVLibrasContent() {
+            if (window.VLibras && window.VLibras.Widget.updateContent) {
+                window.VLibras.Widget.updateContent();
+            }
+        }
+        
+        // Alternância de abas baseada no menu inferior
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Alterna a aba ativa no menu
+                document.querySelectorAll('.menu-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.setAttribute('aria-pressed', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
+
+                // Alterna o conteúdo visível com o estilo correto
+                const tab = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    if (content.id === `tab-${tab}`) {
+                        if (tab === 'conceitos') {
+                            content.style.display = 'grid';
+                        } else {
+                            content.style.display = 'block';
+                        }
+                        content.setAttribute('aria-hidden', 'false');
+                    } else {
+                        content.style.display = 'none';
+                        content.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            });
+            
+            // Adiciona navegação por teclado
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Funcionalidades de acessibilidade
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alto Contraste
+            const contrastToggle = document.getElementById('contrast-toggle');
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                const isPressed = document.body.classList.contains('high-contrast');
+                this.setAttribute('aria-pressed', isPressed);
+                localStorage.setItem('highContrast', isPressed);
+            });
+
+            // Começa sempre com o contraste normal
+            document.body.classList.remove('high-contrast');
+            contrastToggle.setAttribute('aria-pressed', 'false');
+            
+            // Tamanho da Fonte
+            const increaseFont = document.getElementById('increase-font');
+            const decreaseFont = document.getElementById('decrease-font');
+            const resetFont = document.getElementById('reset-font');
+            
+            increaseFont.addEventListener('click', function() {
+                if (document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('large-text')) {
+                    document.body.classList.remove('large-text');
+                    document.body.classList.add('extra-large-text');
+                } else {
+                    document.body.classList.add('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('extra') ? 'extra-large' : 'large');
+            });
+            
+            decreaseFont.addEventListener('click', function() {
+                if (!document.body.classList.contains('large-text') && !document.body.classList.contains('extra-large-text')) return;
+                
+                if (document.body.classList.contains('extra-large-text')) {
+                    document.body.classList.remove('extra-large-text');
+                    document.body.classList.add('large-text');
+                } else {
+                    document.body.classList.remove('large-text');
+                }
+                localStorage.setItem('fontSize', document.body.className.includes('large-text') ? 'large' : 'normal');
+            });
+            
+            resetFont.addEventListener('click', function() {
+                document.body.classList.remove('large-text', 'extra-large-text');
+                localStorage.setItem('fontSize', 'normal');
+            });
+            
+            // Verifica o tamanho da fonte salvo
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize === 'large') {
+                document.body.classList.add('large-text');
+            } else if (savedFontSize === 'extra-large') {
+                document.body.classList.add('extra-large-text');
+            }
+            
+            // Pesquisa no glossário
+            const searchInput = document.getElementById('searchInput');
+            const glossaryItems = document.querySelectorAll('#glossaryList li');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                glossaryItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
         });
     </script>
     </body>
