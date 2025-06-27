@@ -70,6 +70,53 @@
       color: #666;
       margin-top: 50px;
     }
+
+    /* O container principal que imita a imagem */
+    .card-ondas {
+        width: 600px; /* Largura do card, ajuste conforme necessário */
+        background-color: #ffffff; /* Fundo branco para o corpo do card */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+        border-radius: 4px; /* Cantos levemente arredondados */
+        overflow: hidden; /* Garante que o conteúdo respeite os cantos arredondados */
+    }
+    
+    /* O cabeçalho azul */
+    .card-header {
+        background-color: #4A6190; /* Tom de azul similar ao da imagem */
+        color: #ffffff; /* Cor do texto branca */
+        padding: 12px 20px; /* Espaçamento interno (vertical e horizontal) */
+    }
+    
+    /* Estilo para o título principal no cabeçalho */
+    .card-header h2 {
+        margin: 0; /* Remove margens padrão do título */
+        font-size: 1.2em; /* Tamanho da fonte */
+    }
+    
+    /* O corpo do card, onde o texto de definição fica */
+    .card-body {
+        padding: 20px; /* Espaçamento interno para o conteúdo */
+        color: #333; /* Cor de texto escura para o corpo */
+    }
+    
+    /* Estilo para o subtítulo "Direção de Vibração" */
+    .card-body h3 {
+        margin-top: 0; /* Remove a margem de cima do subtítulo */
+        margin-bottom: 10px; /* Adiciona um espaço abaixo do subtítulo */
+        font-size: 1.1em;
+    }
+    
+    /* Estilo para o parágrafo de definição */
+    .card-body p {
+        margin: 0; /* Remove margens padrão do parágrafo */
+        font-size: 1em;
+        line-height: 1.5; /* Melhora a legibilidade do texto */
+    }
+    
+    /* Estilo específico para a parte em negrito no parágrafo */
+    .card-body p strong {
+        color: #000000; /* Deixa o negrito um pouco mais escuro, como na imagem */
+    }
   </style>
 </head>
 <body>
@@ -81,18 +128,29 @@
 
   <main>
     <div class="container">
+    
+    <div class="card-ondas">
+        <div class="card-header">
+            <h2>Classificação das ondas</h2>
+        </div>
+        <div class="card-body">
+            <h3>Direção de Vibração</h3>
+            <p><strong>Transversais:</strong> direção de vibração das partículas é perpendicular à direção de propagação da onda.</p>
+        </div>
+    </div>
+      
     <!-- Onda Mecânica -->
     <div class="card">
       <h2>Onda Mecânica</h2>
       <p>São ondas que precisam de um meio material para se propagar. Exemplos: som, ondas em cordas, ondas sísmicas.</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Transverse_wave.gif" alt="Exemplo de onda mecânica (transversal)">
+      <img src="https://i0.wp.com/www.scenebeta.com/archivos/www/CapturaTutorialAnimacionesydifucionesimagen12.gif" alt="Exemplo de onda mecânica">
     </div>
 
     <!-- Onda Eletromagnética -->
     <div class="card">
       <h2>Onda Eletromagnética</h2>
       <p>São ondas que não precisam de um meio material e podem se propagar no vácuo. Ex: luz, micro-ondas, raios X, rádio.</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Electromagneticwave3D.gif" alt="Onda eletromagnética 3D">
+      <img src="https://s1.static.brasilescola.uol.com.br/be/2020/02/espectro.jpg" alt="Exemplos de ondas eletromagnéticas">
     </div>
 
     <!-- Onda Transversal -->
@@ -115,7 +173,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Ondas em Libras • Página educativa sobre conceitos físicos acessíveis
+    &copy; 2025 • Ondas em Libras
   </footer>
 
   <!-- VLibras Plugin -->
